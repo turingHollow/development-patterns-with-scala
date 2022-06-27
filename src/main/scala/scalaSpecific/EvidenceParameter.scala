@@ -1,7 +1,7 @@
 package gof.pattern
-package `type`
+package scalaSpecific
 
-class EvidenceParameter {
+object EvidenceParameter {
 
   // class with no methods
   case class Bar(value: String)
@@ -21,7 +21,7 @@ class EvidenceParameter {
   // as long as it has evidence that it does - the evidence being the previous object
   def callFoo[A](thing: A)(implicit evidence: WithFoo[A]) = evidence.foo(thing)
 
-  callFoo(Bar("hi")) // and it works
-
+  def main(argv: Array[String]) {
+    println(callFoo(Bar("hi"))) // and it works
+  }
 }
-ssc

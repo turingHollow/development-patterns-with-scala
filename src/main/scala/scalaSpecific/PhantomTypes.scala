@@ -1,5 +1,5 @@
 package gof.pattern
-package `type`
+package scalaSpecific
 
 object PhantomTypes {
 
@@ -11,6 +11,13 @@ object PhantomTypes {
     // compiler provide us is an evidence of a certain relationship between two types
     def open(implicit ev: State =:= Closed) = Door[Open]()
     def close(implicit ev: State =:= Open) = Door[Closed]()
+  }
+
+  def main(argv: Array[String]) {
+    val closedDoor = Door[Closed]()
+    val openDoor = closedDoor.open
+//    openDoor.open -- will not compile
+    openDoor.close
   }
 
 }

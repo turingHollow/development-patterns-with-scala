@@ -64,10 +64,13 @@ object Builder {
     def build(implicit ev: Pizza =:= FullPizza): Food = Food(ingredients)
   }
 
-  new Chef[Chef.Pizza.EmptyPizza]()
-    .addCheese("mozzarella")
-    .addDough
-    .addTopping("olives")
-    .build
+  def main(argv: Array[String]) {
+    val pizza = new Chef[Chef.Pizza.EmptyPizza]()
+      .addCheese("mozzarella")
+      .addDough
+      .addTopping("olives")
+      .build
+    println(pizza)
+  }
 
 }
